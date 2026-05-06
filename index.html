@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мануальный терапевт | Костоправ</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --yellow: #FFD600;
+      --yellow-dark: #F5C200;
+      --yellow-light: #FFF9C4;
+      --black: #1a1a1a;
+      --gray: #444;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: var(--black);
+      background: #fff;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--yellow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      height: 65px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.6; }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 100px 60px 70px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* ===== HERO ===== */
+    #home {
+      background: var(--yellow);
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--black);
+      max-width: 700px;
+    }
+
+    .hero-title span {
+      background: var(--black);
+      color: var(--yellow);
+      padding: 0 10px;
+      border-radius: 6px;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin: 20px 0 35px;
+      max-width: 500px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: #fff;
+    }
+
+    .section-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--yellow-dark);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 25px;
+      color: var(--black);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1000px;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 15px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-box {
+      background: var(--yellow);
+      border-radius: 16px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(255,214,0,0.4);
+    }
+
+    .stat-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--black);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    /* ===== SERVICES ===== */
+    #services {
+      background: var(--yellow-light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+      max-width: 1100px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 35px 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-top: 5px solid var(--yellow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.13);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ===== RESULTS ===== */
+    #results {
+      background: var(--black);
+      color: #fff;
+    }
+
+    #results .section-title { color: #fff; }
+    #results .section-tag { color: var(--yellow); }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+      max-width: 1100px;
+    }
+
+    .result-card {
+      background: #2a2a2a;
+      border-radius: 20px;
+      padding: 30px 25px;
+      border-left: 5px solid var(--yellow);
+      transition: transform 0.2s;
+    }
+
+    .result-card:hover { transform: translateY(-5px); }
+
+    .result-card .stars {
+      color: var(--yellow);
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .result-card p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    .result-card .name {
+      font-weight: 700;
+      color: var(--yellow);
+      font-size: 1rem;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: var(--yellow);
+      align-items: center;
+      text-align: center;
+      min-height: auto;
+      padding: 80px 40px;
+    }
+
+    #contact .section-title { font-size: 2.2rem; }
+
+    .phone-link {
+      display: inline-block;
+      margin-top: 25px;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--black);
+      text-decoration: none;
+      background: #fff;
+      padding: 18px 50px;
+      border-radius: 60px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .phone-link:hover { transform: scale(1.04); }
+
+    .contact-note {
+      margin-top: 18px;
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 600;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111;
+      color: #888;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: 0.85rem; }
+      .logo { font-size: 1.1rem; }
+      section { padding: 90px 25px 60px; }
+      .hero-title { font-size: 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .phone-link { font-size: 1.8rem; padding: 15px 35px; }
+      .section-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">🦴 КостоПрав</div>
+    <ul class="nav-links">
+      <li><a href="#home">Басты бет</a></li>
+      <li><a href="#about">Мен туралы</a></li>
+      <li><a href="#services">Қызметтер</a></li>
+      <li><a href="#results">Нәтижелер</a></li>
+      <li><a href="#contact">Байланыс</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-badge">✦ Кәсіби мануальды терапия</div>
+    <h1 class="hero-title">
+      Ауырсынуды <span>жеңіңіз</span>,<br/>өмірді сезіңіз
+    </h1>
+    <p class="hero-sub">
+      Мануальды терапевт — омыртқа, буын және бұлшықет ауруларын қолмен емдеу маманы
+    </p>
+    <a href="#contact" class="btn">📞 Жазылу</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag">Мен туралы</div>
+        <h2 class="section-title">Сіздің денсаулығыңыз — менің мақсатым</h2>
+        <p>
+          Мен — мануальды терапевт және костоправ. Омыртқа, буын, бұлшықет ауруларын
+          дәрісіз, тек қолмен емдеймін. Әр науқасқа жеке тәсілмен қараймын.
+        </p>
+        <p>
+          Созылмалы ауырсыну, жүйке қысылуы, буын қаттылығы — барлығын шешуге
+          тәжірибем мен білімім жеткілікті.
+        </p>
+        <a href="#contact" class="btn" style="margin-top:10px; font-size:0.95rem; padding:12px 30px;">
+          Консультация алу
+        </a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Жылдық тәжірибе</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Емделген науқас</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">95%</div>
+          <div class="stat-label">Оң нәтиже</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Табиғи емдеу</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-tag">Қызметтер</div>
+    <h2 class="section-title">Не емдейміз?</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🦴</div>
+        <h3>Омыртқаны емдеу</h3>
+        <p>Мойын, кеуде, бел омыртқасының ауырсынуы, грыжа, протрузия</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🦵</div>
+        <h3>Буын ауруы</h3>
+        <p>Тізе, жамбас, иық, шынтақ буындарының қаттылығы мен ауырсынуы</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Жүйке қысылуы</h3>
+        <p>Ишиас, радикулит, қолдың ұюы — жүйке қысылуынан туындаған бұзылыстар</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💪</div>
+        <h3>Бұлшықет тонусы</h3>
+        <p>Бұлшықет спазмы, кернеуі, созылуы және жарақаттан кейінгі қалпына келтіру</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Бас ауруы</h3>
+        <p>Мойын омыртқасынан туындаған бас ауруы, мигрень, бас айналу</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏃</div>
+        <h3>Спорттық жарақат</h3>
+        <p>Спорттан кейінгі жарақаттарды қалпына келтіру және алдын алу</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <div class="section-tag">Нәтижелер</div>
+    <h2 class="section-title">Науқастарым не дейді?</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="stars">★★★★★</div>
+        <p>«3 жыл бел ауырды, дәрі ішіп та алмады. 5 сеанстан кейін ауырсыну толық кетті. Рахмет!»</p>
+        <div class="name">— Айгүл Б., 42 жас</div>
+      </div>
+      <div class="result-card">
+        <div class="stars">★★★★★</div>
+        <p>«Мойным қатып қалған еді, бұрыла алмадым. Бірінші сеанстан кейінак жеңілдеді, таң қалдым.»</p>
+        <div class="name">— Серік Д., 35 жас</div>
+      </div>
+      <div class="result-card">
+        <div class="stars">★★★★★</div>
+        <p>«Тізем ауырып, операция жасаймыз деген. Мануальды терапиядан кейін операциясыз айықтым!»</p>
+        <div class="name">— Гүлнар М., 55 жас</div>
+      </div>
+      <div class="result-card">
+        <div class="stars">★★★★★</div>
+        <p>«Спорттан кейін иығым ауырды. Жылдам, тиімді, кәсіби! Тек осы маманға барамын.»</p>
+        <div class="name">— Арман Т., 28 жас</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-tag" style="color:#555;">Байланыс</div>
+    <h2 class="section-title">Бүгін жазылыңыз!</h2>
+    <p style="font-size:1.1rem; color:#555; max-width:400px; margin:0 auto;">
+      Телефон арқылы хабарласыңыз — уақыт белгілейміз
+    </p>
+    <a href="tel:+77055556164" class="phone-link">
+      📞 8 705 555 6164
+    </a>
+    <p class="contact-note">Дүйсенбі — Жексенбі · 09:00 – 20:00</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2024 КостоПрав · Мануальды терапевт · Барлық құқықтар қорғалған</p>
+  </footer>
+
+  <!-- SMOOTH SCROLL -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))
+          .scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
